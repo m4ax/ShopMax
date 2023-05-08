@@ -19,7 +19,9 @@
 .container {
   display: flex;
   justify-content: space-between;
+  padding: 0 40px; /* Add padding to the container to create space between the edges of the screen and the components */
 }
+
 
 .cart-component {
   margin-right: 40px;

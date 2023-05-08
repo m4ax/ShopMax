@@ -8,7 +8,8 @@ import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import { useState } from 'react'
+// import { useState } from 'react'
+import ControllableStates from '../Filter/index'
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -54,6 +55,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function SearchAppBar(props) {
 
+ const { value, setValue, inputValue, setInputValue, options } = props
 
   function handleChange(event) {
 
@@ -83,6 +85,7 @@ export default function SearchAppBar(props) {
           >
             ShopMax
           </Typography>
+          <ControllableStates value={value} setValue={setValue} inputValue={inputValue} setInputValue={setInputValue} options={options}/>
           <Search>
             <SearchIconWrapper>
               <SearchIcon />

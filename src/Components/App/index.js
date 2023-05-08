@@ -5,7 +5,8 @@ import Card from '../Card/index'
 import SearchAppBar from '../SearchAppBar/index'
 import theme from '../ThemeProvider/theme'
 import { ThemeProvider } from '@mui/material/styles';
-
+import MediaCard from '../Card/index'
+import ControllableStates from '../Filter'
 
 function App() {
 
@@ -36,15 +37,17 @@ price: "Coming soon.."
     <ThemeProvider theme={theme}>
     <API setReply={setReply}/>
     <SearchAppBar input={input} setInput={setInput} value={value} setValue={setValue} inputValue={inputValue} setInputValue={setInputValue} options={options}/>
-    
+    <ControllableStates className="filter" value={value} setValue={setValue} inputValue={inputValue} setInputValue={setInputValue} options={options}/>
+    <div className="grid-container">
     {reply.filter(product => { if(value === 'All Products') {
 
     return product.title.toLowerCase().includes(input.toLowerCase())
     } else {
     return product.title.toLowerCase().includes(input.toLowerCase()) && product.category === value }
     
-    }).map((product) =>  <Card product={product}/>
+    }).map((product) =>  <MediaCard  product={product}/>
     )}
+    </div>
    </ThemeProvider>
     </div>
 )}

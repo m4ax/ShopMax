@@ -55,8 +55,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function SearchAppBar(props) {
 
- const { value, setValue, inputValue, setInputValue, options } = props
-
   function handleChange(event) {
 
     props.setInput(event.target.value)
@@ -85,7 +83,6 @@ export default function SearchAppBar(props) {
           >
             ShopMax
           </Typography>
-          <ControllableStates value={value} setValue={setValue} inputValue={inputValue} setInputValue={setInputValue} options={options}/>
           <Search>
             <SearchIconWrapper>
               <SearchIcon />

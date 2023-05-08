@@ -29,16 +29,21 @@ price: "Coming soon.."
      }, [reply])
 
     // reply.map((product) => (Card))
-     console.log(typeof input)
-     console.log(typeof reply.title)
+    //  console.log(typeof input)
+    //  console.log(typeof reply.title)
     return (
     <div>
     <ThemeProvider theme={theme}>
     <API setReply={setReply}/>
     <SearchAppBar input={input} setInput={setInput} value={value} setValue={setValue} inputValue={inputValue} setInputValue={setInputValue} options={options}/>
-    {reply.filter(product => product.title.toLowerCase().includes(input.toLowerCase()) && product.category === value).map((product) =>
     
-    <Card product={product}/>
+    {reply.filter(product => { if(value === 'All Products') {
+
+    return product.title.toLowerCase().includes(input.toLowerCase())
+    } else {
+    return product.title.toLowerCase().includes(input.toLowerCase()) && product.category === value }
+    
+    }).map((product) =>  <Card product={product}/>
     )}
    </ThemeProvider>
     </div>

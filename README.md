@@ -27,15 +27,15 @@ These instructions will help you set up the project on your local machine for de
    git clone https://github.com/yourusername/shopmax.git
 
 2. Navigate to the project directory:
-
+   ```bash
 cd shopmax
 
 3. Install the required dependencies:
-
+   ```bash
 npm i
 
 4. Start the development server:
-
+   ```bash
 npm start
 
 The application should now be running at http://localhost:3000/.

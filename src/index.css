@@ -15,3 +15,12 @@
 .filter {
   margin-bottom: 25px;
 }
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart-component {
+  margin-right: 40px;
+}

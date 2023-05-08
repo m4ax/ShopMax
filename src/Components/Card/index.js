@@ -8,7 +8,11 @@ import Typography from '@mui/material/Typography';
 
 export default function MediaCard(props) {
 
-    const { product } = props
+    const { product, cart, setCart } = props
+
+    function handleChange() {
+        setCart(cart +1)
+    }
 
     return (
         <Card sx={{ maxWidth: 400 }}>
@@ -36,7 +40,7 @@ export default function MediaCard(props) {
       </CardContent>
       <CardActions>
         <Button size="small">£{product.price}</Button>
-        <Button size="small">Add To Cart</Button>
+        <Button size="small" onClick={handleChange}>Add To Cart</Button>
       </CardActions>
     </Card>
   );

@@ -1,12 +1,12 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import API from '../API/index'
-import Card from '../Card/index'
 import SearchAppBar from '../SearchAppBar/index'
 import theme from '../ThemeProvider/theme'
 import { ThemeProvider } from '@mui/material/styles';
 import MediaCard from '../Card/index'
 import ControllableStates from '../Filter'
+import Cart from '../Cart/index.js'
 
 function App() {
 
@@ -24,6 +24,7 @@ price: "Coming soon.."
     const options = ["All Products", "men's clothing", "women's clothing", "electronics", "jewelery"];
     const [value, setValue] = React.useState(options[0]);
     const [inputValue, setInputValue] = React.useState('');
+    const [cart, setCart ] = useState(0)
 
     useEffect(() => {
         console.log("State Updated", reply)
@@ -37,7 +38,10 @@ price: "Coming soon.."
     <ThemeProvider theme={theme}>
     <API setReply={setReply}/>
     <SearchAppBar input={input} setInput={setInput} value={value} setValue={setValue} inputValue={inputValue} setInputValue={setInputValue} options={options}/>
+    <div className="container">
     <ControllableStates className="filter" value={value} setValue={setValue} inputValue={inputValue} setInputValue={setInputValue} options={options}/>
+    <Cart cart={cart} className="cart-component"/>
+    </div>
     <div className="grid-container">
     {reply.filter(product => { if(value === 'All Products') {
 
@@ -45,7 +49,7 @@ price: "Coming soon.."
     } else {
     return product.title.toLowerCase().includes(input.toLowerCase()) && product.category === value }
     
-    }).map((product) =>  <MediaCard  product={product}/>
+    }).map((product) =>  <MediaCard cart={cart} setCart={setCart} product={product}/>
     )}
     </div>
    </ThemeProvider>
